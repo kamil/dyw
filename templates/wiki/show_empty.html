@@ -1,0 +1,9 @@
+{% extends 'base/project.html' %}
+{% block title %}Wiki / DYW{% endblock %}
+{% block site_content %}
+<div class="content-box">
+	<div class="content-box-body">
+	Strona o podanej nazwie nie istnieje, możesz ja utwożyć <a href="/p/{{ project.name }}/wiki/edit/{{ page.name }}/">klikająć tutaj</a>
+	</div>
+</div>
+{% endblock %}

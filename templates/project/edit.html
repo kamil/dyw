@@ -1,0 +1,32 @@
+{% extends 'base/project.html' %}
+{% block site_content %}
+<div class="content-box">
+	<div class="content-box-head" style="font-size:14px;">
+		<strong style="font-size:14px;">Preferencje projektu</strong> | <a href="/p/{{ project.name }}/edit/backup/">Backup</a>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body" style="padding:10px;">
+		<form action="." method="post" accept-charset="utf-8">
+			<div style="color:grey;">Nazwa <small>(tylko male znaki, bez spacji)</small></div>
+			{{ form.name }}
+			{{ form.errors.name }}
+
+            <div style="color:grey;">Tytuł</div>
+			{{ form.title }}
+			{{ form.errors.title }}
+
+            <div style="color:grey;">Opis</div>
+			{{ form.description }}
+			{{ form.errors.description }}
+			
+			<div style="color:grey;">Klucz</div>
+			{{ form.secret }}
+			{{ form.secret.description }}
+			
+			<div class="buttons-box">
+				<input style="font-weight: bold;" type="submit" value="Zachowaj">
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

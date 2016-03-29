@@ -1,0 +1,62 @@
+{% extends 'base/clean.html' %}
+{% block title %}Profil / DYW{% endblock %}
+{% block site_content %}
+<div class="content-box">
+	<div class="content-box-head">
+		<strong style="font-size:14px; float:left;">Profil</strong>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body">
+		{{ form.errors }}
+		<form action="." method="post" accept-charset="utf-8" enctype="multipart/form-data" >
+			<div style="margin-right:15px;float:left;">
+				<div style="color:grey;">Imię</div>
+				{{ form.first_name }}
+				<div style="color:grey;">Nazwisko</div>
+				{{ form.last_name }}
+			</div>
+			<div style="">
+				<div style="color:grey;">Mail</div>
+				{{ form.email }}
+				<div style="color:grey;">Jabber</div>
+				{{ form.im_jabber }}
+			</div>
+			<div style="color:grey;">Preferowany markup</div>
+			{{ form.markup }}
+			<div style="color:grey;">Nowe hasło</div>
+			{{ form.new_password }}
+			<div class="buttons-box">
+				<input style="font-weight: bold;" type="submit" value="Zachowaj">
+			</div>
+		</form>
+		
+		<!--<em>Zmiana avatara tymczasowo wylaczona</em>-->
+		<!--
+		<form action="." method="post" accept-charset="utf-8" enctype="multipart/form-data" >
+			{% if user.get_profile.options.has_photo %}
+			<img src="/s/f/avatars/{{ user.id }}_75x75.jpg"	>
+			{% endif %}
+			<div style="color:grey;">Avatar</div>
+			<input type="file" name="avatar">
+			<div class="buttons-box">
+				<input style="font-weight: bold;" type="submit" value="Zmień avatar">
+			</div>
+		</form>
+		-->
+	</div>
+</div>
+
+
+<!--
+<div class="content-info">
+	<div class="content-info-head">
+	 	<strong>Strony</strong>
+	</div>
+	{% for page in pages %}
+	<div style="padding:4px; background-color:#eee; margin-bottom:2px">
+	<a href="/p/{{ project.name }}/wiki/{{ page.name }}/">{{ page.get_title }}</a><br/>
+	</div>
+	{% endfor %}
+</div>
+--> 
+{% endblock %}

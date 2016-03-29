@@ -1,0 +1,78 @@
+{% extends 'base/project.html' %}
+{% block title %}Nowe zadanie / {{ project.title }} / DYW{% endblock %}
+{% block site_content %}
+<div class="content-box" style="width:520px;">
+	<div class="content-box-head">
+		<strong style="font-size:14px; float:left;">Nowe zadanie</strong>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body">
+		<div style="margin-left:10px;">
+			<form method="post" accept-charset="utf-8">
+				<div id="ticket-form" style="">
+					<div style="color:grey;">Krótki opis:</div>
+					<div>
+						<input style="padding:5px; width:462px; font-size:110%;" type="text" name="title" value="{% if form.title.data %}{{ form.title.data }}{% endif %}">
+					</div>
+					{{ form.title.errors }}
+				
+					<div style="color:grey;">Opis:</div>
+					<textarea name="description" style="width:465px; font-size:110%; padding:5px; height:250px;" >{% if form.description.data %}{{ form.description.data }}{% endif %}</textarea>
+					<div style="background-color:#ffe;padding:3px; width:469px; font-size:10px; text-align:right;">
+						Formatowanie :
+						<select style="font-size:10px;" id="se_markup" name="markup">
+							<option value="1">Textile</option>
+							<option value="0">ReST</option>
+						</select>
+					</div>
+					<div style="clear:both;"></div>
+					{{ form.description.errors }}
+				
+					<div style="padding:5px;">
+					<ul style="list-style-type:none; margin:0px; padding:0px;">
+						<li style="float:left; margin-right:10px;">Przydziel do :<br/>
+							<select name="assigned" style="width:130px;">
+								<option value="0">Nie przydzielaj</option>
+								{% for user in members %}
+								<option value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>
+								{% endfor %}
+							</select>
+						</li>
+						<li style="float:left; margin-right:10px;">W etapie :<br />
+							<select name="milestone" style="width:130px;">
+								{% for milestone in milestones %}
+								<option value="{{ milestone.id }}">{{ milestone.title }}</option>
+								{% endfor %}
+							</select>
+						</li>
+
+						<li style="float:left; margin-right:10px;">Typ :<br />
+							<select name="in_type">
+								{% for type in types %}
+								<option value="{{ type.id }}">{{ type.title }}</option>
+								{% endfor %}
+							</select>
+						</li>
+
+						<li>Priorytet :<br />
+							<select name="priority">
+								{% for prio in priority %}
+								<option value="{{ prio.id }}">{{ prio.title }}</option>
+								{% endfor %}
+							</select>
+						</li>
+					</ul>
+					</div>
+
+
+				</div>
+			
+				<div class="buttons-box" style="margin-right:10px;">
+					<input style="font-weight: bold;" type="submit" value="Dodaj"> lub <input type="submit" name="save_and_add" value="Zapisz i dodaj kolejne">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

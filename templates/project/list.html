@@ -1,0 +1,38 @@
+{% extends 'base/clean.html' %}
+{% block site_content %}
+<div class="content-box">
+	<div class="content-box-head">
+		<strong style="font-size:14px; float:left;">Projekty</strong>
+		<a style="float:right; margin-right:5px;" href="/projects/new/">Nowy projekt</a>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body">
+		{% for project in projects %}
+		<div>
+			<strong style="font-size:16px;"><a href="/p/{{ project.name }}/">{{ project.title }}</a></strong>
+			{% if project.milestones %}
+			<div style="padding:5px; background-color:lightyellow;">
+				{% for milestone in project.milestones %}
+					<div style="margin-bottom:8px">
+						<strong>{{ milestone.title }}</strong> ({{ milestone.closed_tickets }} / {{ milestone.count_tickets }})<span style="font-size:9px;"> {% if milestone.date_due %} do {{ milestone.date_due|date:"d/m/Y" }} {% endif %}</span>
+					</div>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+</div>
+<!--
+<div class="content-info">
+	<div class="content-info-head">
+	 	<strong>Strony</strong>
+	</div>
+	{% for page in pages %}
+	<div style="padding:4px; background-color:#eee; margin-bottom:2px">
+	<a href="/p/{{ project.name }}/wiki/{{ page.name }}/">{{ page.get_title }}</a><br/>
+	</div>
+	{% endfor %}
+</div>
+-->
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base/index.html' %}
+{% block main_content %}
+<div style="padding:25px;">
+	<h2>Do Your work. Don't be stupid.</h2>
+	{% if form.errors %}
+	<p>Zła nazwa użytkownika lub hasło. Spróbuj ponownie.</p>
+	{% endif %}
+	{% if wrong %}
+	<p>Zła nazwa użytkownika lub hasło. Spróbuj ponownie.</p>
+	{% endif %}
+	<div style="background-color:white; padding:15px; width:300px;">
+		<form method="post" action=".">
+			<input type="hidden" name="next" value="{{ next }}" />
+			<div>E-mail/login</div><div>{{ form.login }}</div>
+			<div style="margin-top:5px;">Hasło</div><div>{{ form.password }}</div>
+			<input style="margin-top:5px;" type="submit" value="Sprawdz mnie"/>
+		</form>
+		<!--<div style="border-bottom:1px solid #efe; margin-bottom:10px; margin-top:10px;"></div>
+		<a href="/register/">Rejestracja</a>-->
+	</div>
+</div>
+{% endblock %}

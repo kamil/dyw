@@ -1,0 +1,72 @@
+{% extends 'base/project.html' %}
+{% load render %}
+{% block title %}Zadania / DYW{% endblock %}
+{% block site_content %}
+<style type="text/css" media="screen">
+    .tr-color-0 { background-color:lightyellow; }
+    .tr-color-1 { background-color:lightgreen; }
+    .tr-color-2 { background-color:lightred; }
+    .tr-color-3 { background-color:red; color:white; }
+    
+    
+    
+    td {
+        padding:5px;
+    }
+    
+</style>
+<div class="content-box">
+	<div class="content-box-head">
+		<strong style="font-size:14px; float:left;">Zadania</strong>
+		<a style="float:right; margin-right:5px;" href="/p/{{ project.name }}/tasks/new/">Nowe zadanie</a>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body" style="padding:10px;">
+	{% render task/frag/tasks.html tasks=tasks %}
+	{% if tasks_closed_or_invalid_count %}
+	<div style="padding:2px;">
+		<a style="color:lightgrey;" href="/p/{{ project.name }}/tasks/closed/">Zadania zakończone ({{tasks_closed_or_invalid_count}})</a>
+	</div>
+	{% endif %}
+	</div>
+	
+	
+	
+</div>
+
+<div class="content-info">
+
+	
+	<div class="content-info-head">
+		<strong style="float:left;">Tagi</strong>
+		<span style="float:right;">
+			<a href="/p/{{ project.name }}/tasks/tags/new/">Dodaj</a>
+		</span>
+		<div style="clear:both;"></div>
+	</div>
+	<div style="margin-bottom:10px;">
+		{% if tags %}
+		{% for tag in tags %}
+			<span class="tag">{{ tag.name }}</span>
+		{% endfor %}
+		{% else %}
+		<em style="color:grey;">Dodaj tagi aby lepiej zorganizować projekt</em>
+		{% endif %}
+	</div>
+	
+	
+	<div class="content-info-head">
+	 	<strong>RSS</strong>
+	</div>
+	<div>
+		<div style="padding:5px; background:url(http://www.nck.org.pl/public/images/ico/rss_ico.gif) no-repeat #eee; background-position: 5px 5px;">
+			<a style="margin-left:20px;" href="/rss/tasks/{{ project.name }}/{{ project.get_secret }}/">Najnowsze zadania</a>
+		</div>
+		<div style="margin-top:3px; padding:5px; background:url(http://www.nck.org.pl/public/images/ico/rss_ico.gif) no-repeat #eee; background-position: 5px 5px;">
+			<a style="margin-left:20px;" href="/rss/tasks_assigned/{{ project.name }}/{{ user.id }}/{{ project.get_secret }}/">Nowo przypisane do mnie</a>
+		</div>
+	</div>
+	
+</div>
+
+{% endblock %}

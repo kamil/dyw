@@ -1,0 +1,24 @@
+/* tlo naglwka */
+#site-top {
+}
+/* tytul projektu */
+#site-top h1 {
+}
+
+#site-menu a {
+    background-color: #42577b;
+    color:#d6ffff;
+    border-color:#c5e2e9;
+}
+
+#site-menu a:hover {
+    background-color:#253966;
+    border-bottom:1px solid #253966;
+    color:#d6ffff;
+}
+
+#active-tab {
+    background:#E5E5E5 none repeat scroll 0% 0% !important;
+    color:#000 !important;
+    border-color:#E5E5E5 !important;
+}

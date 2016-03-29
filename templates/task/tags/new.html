@@ -1,0 +1,22 @@
+{% extends 'base/project.html' %}
+{% block site_content %}
+<div class="content-box">
+	<div class="content-box-head">
+		<strong style="font-size:14px; float:left;">Nowy tag</strong>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body">
+		<form action="." method="post" accept-charset="utf-8">
+			<div style="color:grey;">Tytuł</div>
+			{{ tag_form.title }}
+			{{ tag_form.errors.title }}
+			<div style="color:grey;">Opis</div>
+			{{ tag_form.description }}
+			{{ tag_form.errors.description }}
+			<div class="buttons-box">
+				<input style="font-weight: bold;" type="submit" value="Zachowaj">
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

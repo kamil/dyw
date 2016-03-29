@@ -1,0 +1,28 @@
+{% extends 'base/project.html' %}
+{% block site_content %}
+<div class="content-box">
+	<form method="post" accept-charset="utf-8">
+		<div class="content-box-body">
+			<div style="color:grey;">Tytuł</div>
+			<input style="font-size:15px; padding:5px; width:98%" type="text" name="title" value="{{ page.title }}" id="title">
+			<div style="color:grey;">Treść</div>
+			<textarea name="body" style="height:400px; padding:5px; width:98%;">{{ revision.content }}</textarea>
+			<div style="color:grey;">Komentarz</div>
+			<textarea name="comment" style="height:30px; padding:5px; width:98%;"></textarea>
+			
+			<div class="buttons-box">
+				<input onclick="alert('NotImplemented'); return false;" type="submit" value="Podgląd"> <input style="font-weight: bold;" type="submit" value="Zachowaj jako najnowszą">
+			</div>
+		</div>
+	</form>
+</div>
+<div class="content-info">
+	<div class="content-info-head">
+	 	<strong>Formatowanie RST</strong>
+	</div>
+	*italics* - <i>italics</i><br/>
+	**pogrubienie** - <strong>pogrubienie</strong><br/>
+	<br/>
+	Więcej na <a href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">Quick reStructuredText</a>
+</div>
+{% endblock %}

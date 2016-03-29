@@ -1,0 +1,39 @@
+{% extends 'base/project.html' %}
+{% block title %}Zespół / {{ project.name }} / DYW{% endblock %}
+{% load render %}
+{% block site_content %}
+
+<script type="text/javascript" charset="utf-8">
+</script>
+
+<div class="content-box">
+	<div class="content-box-head">
+		<strong style="font-size:14px; float:left;">Zespół</strong>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body">
+		<table border="0" cellspacing="2" cellpadding="2">
+			{% for user in users %}
+			<tr>
+				<td>{% render user/frag/in_line.html user=user %}</td>
+			</tr>
+			{% endfor %}
+			<tr>
+				<td></td>
+			</tr>
+		</table>
+		
+		
+		<div style="background-color:lightyellow; padding:1px; padding-left:15px;">
+			<p><strong>Zaproś do zespołu</strong></p>
+			<form action="." method="post" accept-charset="utf-8">
+				e-mail {{ form.email }} <input type="submit" value="Zaproś">
+			</form>
+		</div>
+	</div>
+	
+	
+</div>
+
+
+{% endblock %}

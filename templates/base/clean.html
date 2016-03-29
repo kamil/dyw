@@ -1,0 +1,31 @@
+{% extends 'base/index.html' %}
+{% block main_content %}
+<div id="site-top">
+		<h1>DYW</h1>
+		<ul id="site-menu">
+			<li><a {% ifequal page_name "dashboard" %}id="active-tab"{% endifequal %} href="/">Moja tablica</a></li>
+		<!--	<li><a {% ifequal page_name "crowd" %}id="active-tab"{% endifequal %} href="/crowd/">Ludzie</a></li> -->
+			<li><a {% ifequal page_name "projects" %}id="active-tab"{% endifequal %} href="/projects/">Projekty</a></li>
+		</ul>
+	<div style="background-color:#eee; width:150px; padding:4px; float:right; position:absolute; right:30px; top:20px;">
+		<div style="font-size:110%;">
+			{{ user.first_name }} {{ user.last_name }} [<a href="/user/logout/">W</a>]
+		</div>
+		<div style="font-size:80%;">
+			<a href="/">Tablica</a> <a href="/user/profile/">Profil</a> <a href="/projects/">Projekty</a>
+		</div>
+	</div>
+</div>
+{% if user_messages %}
+<div id="user-messages">
+{% for message in user_messages %}
+<div class="user-message user-message-{{message.className}}">{{ message.text }}</div>
+{% endfor %}
+</div>
+{% endif %}
+<div id="site-content">
+    {% block site_content %}
+	{% endblock %}
+	<div style="clear:both;"></div>
+</div>
+{% endblock %}

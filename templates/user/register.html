@@ -1,0 +1,23 @@
+{% extends 'base/index.html' %}
+{% block title %}Rejestracja / DYW{% endblock %}
+{% block main_content %}
+<div style="padding:25px;">
+	<h2>Rejestracja</h2>
+	<div style="background-color:white; padding:15px; width:300px;">
+		<form method="post" action=".">
+			<div style="color:grey;">Imię</div>
+			{{ form.first_name }}
+			{{ form.errors.first_name }}
+			<div style="color:grey;">Nazwisko</div>
+			{{ form.last_name }}
+			{{ form.errors.last_name }}
+			<div style="color:grey;">E-mail</div>
+			{{ form.email }}
+			{{ form.errors.email }}
+			<div>
+				<input style="margin-top:5px;" type="submit" value="Rejestracja"/>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

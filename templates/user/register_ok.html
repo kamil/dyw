@@ -1,0 +1,10 @@
+{% extends 'base/index.html' %}
+{% block main_content %}
+<div style="padding:25px;">
+	<h2>Rejestracja</h2>
+	<div style="background-color:white; padding:15px; width:400px;">
+		Na mail <strong>{{ email }}</strong> wyslano email z haslem.
+		<p>Przejdz do <a href="http://{{ provider }}">swojej skrzynki pocztowej</a> teraz!</p>
+	</div>
+</div>
+{% endblock %}

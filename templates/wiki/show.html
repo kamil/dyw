@@ -1,0 +1,85 @@
+{% extends 'base/project.html' %}
+{% block title %}{{ page.title }} / Wiki / DYW{% endblock %}
+{% load render %}
+{% block site_content %}
+
+	<div class="content-box">
+		<div class="content-box-head">
+			<strong style="font-size:14px; float:left;">{{ page.title }}</strong>
+			<a style="float:right; margin-right:5px;" href="/p/{{ project.name }}/wiki/edit/{{ page.name }}/">Edytuj</a>
+			<div style="clear:both"></div>
+		</div>
+		<div class="content-box-body">
+			{{ revision.get_content|safe }}
+		</div>
+	</div>
+	
+	<div class="content-info">
+		<div class="content-info-head">
+		 	<strong style="float:left;">Strony</strong>
+			<span style="float:right;">
+				<a onclick="document.location='/p/ipla/wiki/edit/'+prompt('Nazwa ( bez spacji )','Start')+'/';" href="#nowa-strona">Nowa</a>
+			</span>
+			<div style="clear:both;"></div>
+		</div>
+		{% for page in pages %}
+		<div style="padding:4px; background-color:#eee; margin-bottom:2px">
+		<a href="/p/{{ project.name }}/wiki/{{ page.name }}/">{{ page.get_title }}</a><br/>
+		{% if page.active %}
+		<span style="font-size:10px;">
+		Rewizja {{count_revision}}, ostatnia zmiana <span class="ddate">{{ revision.date_added }}</span> przez <a href="/user/{{ revision.creator.id }}/"> {% render user/frag/in_line.html user=revision.creator %}</a><br/>
+		{% if revision.comment %} Komentarz: 
+			<span style="background-color:lightyellow; font-size:10px;">
+				{{ revision.comment }}
+			</span>
+		{% endif %}
+		</span>
+		<br />
+		
+		{% for spage in sub_pages %}
+		<div style="padding:4px; margin-left:5px; background-color:#eee; margin-top:2px grey;">
+			<a href="/p/{{ project.name }}/wiki/{{ spage.name }}/">{{ spage.get_title }}</a>
+		</div>	
+		{% endfor %}
+		
+		{% endif %}
+		</div>
+		
+		
+		
+		{% endfor %}
+		
+	</div>
+	
+	
+	{% comment %}
+	<div class="content-info">
+		{% if attachments %}
+		<div class="content-info-head">
+		 	<strong>Załączniki</strong>
+		</div>
+		<ul style="list-style-type: none; margin:0px; padding:0px;">
+		{% for attachment in attachments %}
+			<li style="margin:0px;">
+				<a href="{{ attachment.get_url}}">{{ attachment.filename }}</a>
+				<div style="font-size:9px;">
+					Dodany <span class="ddate">{{ attachment.date_added }}</span> przez {{ attachment.addedby }}
+				</div>
+			</li>
+		{% endfor %}
+		</ul>
+		{% endif %}
+		
+		<div class="content-info-head" style="margin-top:10px;">
+		 	<strong>Wersja</strong>
+		</div>
+		Ta strona ma <a href="/space/{{ project.name }}/wiki/diff/{{ page.name }}/{{ prev_revno }}/{{ revno }}/">{{ revno }}</a> wersji, ostatnia zmiana <span class="ddate">{{ page.date_added }}</span> przez {{ page.addedby }}
+		{% if page.comment %}
+		<br/><br/><strong>Komentarz:</strong><br/>
+		<em>{{ page.comment }}</em>
+		{% endif %}
+	</div>
+	{% endcomment %}
+
+
+{% endblock %}

@@ -1,0 +1,166 @@
+* {
+    margin:0px;
+    padding:0px;
+}
+
+html,body {
+    font-family:"Lucida Grande",verdana,arial,helvetica,sans-serif;
+    font-size:12px;
+}
+
+#site-top {
+}
+
+#site-top h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0pt 0pt 0pt 30px;
+    padding:15pt 0pt 15px;
+    text-align:left;
+    color:#333;
+}
+
+#site-menu {
+    height:19px;
+    margin:0pt 57px 0pt 30px;
+    padding:0pt;
+}
+
+
+#site-menu li {
+    display:inline;
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    margin:0px;
+    float:left;
+    padding:0px;
+}
+
+#site-menu a {
+    background-color:#1A4F85;
+    border-color:#036;
+    border-style:solid;
+    border-width:1px;
+    color:#fff;
+    text-decoration:none;
+    padding:3px;
+    padding-left:4px;
+    padding-right:4px;
+    margin:0px;
+}
+
+#site-menu a:hover {
+    background-color:#1D64AD;
+    border-bottom:1px solid #1D64AD;
+    color:#FFFFFF;
+}
+
+#active-tab {
+    background:#E5E5E5 none repeat scroll 0% 0% !important;
+    color:#090 !important;
+    border-color:#E5E5E5;
+}
+
+
+#site-content {
+    padding-top:10px;
+}
+
+.content-box {
+    background-color:white;
+    width:63%;
+    margin-left:30px;
+    float:left;
+    border-bottom: 1px solid #dcd7c8;
+    border-right: 1px solid #dcd7c8;
+    
+}
+
+.content-box-head {
+    padding:10px; background-color:#EDF3FE
+}
+
+.content-box-body {
+    padding:7px;
+}
+
+.content-info {
+    width:30%;
+    float:left;
+    margin-left:10px;
+    margin-bottom:7px;
+}
+
+.content-info-head {
+    padding:7px;
+    background-color:#FFFFCC;
+    margin-bottom:10px;
+    border-bottom: 1px solid #dcd7c8;
+    border-right: 1px solid #dcd7c8;
+}
+
+a {
+    color:#036;
+}
+
+.buttons-box {
+    background-color:#EFEFEF;
+    color:#999999;
+    font-size:12px;
+    margin:10px 0pt 0pt;
+    padding:5px;
+}
+
+#user-messages {
+    margin:0pt 57px 0pt 30px;
+    padding:0pt;
+    margin-top:10px;
+    width:63%;
+    
+}
+
+.user-message-error {
+    background:#CC0000;
+    border-color:#CC9999;
+    color:#FFFFFF;
+}
+
+.user-message-success {
+    background:green;
+    color:#fff;
+}
+
+.user-message-info {
+    background:lightyellow;
+    color:#000;
+}
+
+
+.user-message {
+    border:1px solid #CCCCCC;
+    font-size:12px;
+    margin-bottom:2px;
+    padding:5px 5px 5px 5px;
+    text-align:left;
+}
+
+.tag {
+	background-color:white;
+	padding:3px;
+	text-decoration:none;
+	color:black;
+	margin:2px;
+}
+
+
+.ticket-b-0 { background-color:#FFFF00; }
+.ticket-b-1 { background-color:#99FF00; }
+.ticket-b-2 { background-color:#FF6633; }
+.ticket-b-3 { background-color:#FF0000; color:white; }
+
+.ticket-c-0 { color:#FFFF00; }
+.ticket-c-1 { color:#339900; }
+.ticket-c-2 { color:#FF6633; }
+.ticket-c-3 { color:#FF0000; }
+

@@ -1,0 +1,29 @@
+{% extends 'base/clean.html' %}
+{% block site_content %}
+<div class="content-box">
+	<div class="content-box-head">
+		<strong style="font-size:14px; float:left;">Ludzie</strong>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body">
+		{% for company in companies %}
+			<h4>{{ company.title }}</h4>
+			{% for user in company.users %}
+				<a href="/user/{{ user.id }}/">{{ user.first_name }} {{ user.last_name }}</a>
+			{% endfor %}
+		{% endfor %}
+	</div>
+</div>
+<!--
+<div class="content-info">
+	<div class="content-info-head">
+	 	<strong>Strony</strong>
+	</div>
+	{% for page in pages %}
+	<div style="padding:4px; background-color:#eee; margin-bottom:2px">
+	<a href="/p/{{ project.name }}/wiki/{{ page.name }}/">{{ page.get_title }}</a><br/>
+	</div>
+	{% endfor %}
+</div>
+-->
+{% endblock %}

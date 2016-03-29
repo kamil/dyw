@@ -1,0 +1,38 @@
+{% extends 'base/index.html' %}
+{% block main_content %}
+<div id="site-top">
+	<h1>{{ project.title }}<span style="font-size:10px; color:grey;">{{ project.description }}</span></h1>
+	<ul id="site-menu">
+		<!--<li><a {% ifequal page_name "dashboard" %}id="active-tab"{% endifequal %} href="/p/{{ project.name }}/dashboard/">Tablica</a></li>-->
+		<li><a {% ifequal page_name "tasks" %}id="active-tab"{% endifequal %} href="/p/{{ project.name }}/tasks/">Zadania</a></li>
+		<li><a {% ifequal page_name "milestones" %}id="active-tab"{% endifequal %} href="/p/{{ project.name }}/milestones/">Etapy</a></li>
+		<li><a {% ifequal page_name "wiki" %}id="active-tab"{% endifequal %} href="/p/{{ project.name }}/wiki/Start/">Wiki</a></li>
+		<li><a style="background-color:grey;" {% ifequal page_name "files" %}id="active-tab"{% endifequal %} href="#">Pliki</a></li>
+		<li><a {% ifequal page_name "team" %}id="active-tab"{% endifequal %} href="/p/{{ project.name }}/team/">Zespół</a></li>
+		<li><a {% ifequal page_name "timeline" %}id="active-tab"{% endifequal %} href="/p/{{ project.name }}/timeline/">Aktywność</a></li>
+		<li><a style="background-color:grey;"{% ifequal page_name "messages" %}id="active-tab"{% endifequal %} href="#">Komunikaty</a></li>	
+		
+	</ul>
+	
+	<div style="background-color:#eee; width:150px; padding:4px; float:right; position:absolute; right:30px; top:20px;">
+		<div style="font-size:110%;">
+			{{ user.first_name }} {{ user.last_name }} [<a href="/user/logout/">W</a>]
+		</div>
+		<div style="font-size:80%;">
+			<a href="/">Tablica</a> <a href="/user/profile/">Profil</a> <a href="/projects/">Projekty</a>
+		</div>
+	</div>
+</div>
+{% if user_messages %}
+<div id="user-messages">
+{% for message in user_messages %}
+<div class="user-message user-message-{{message.className}}">{{ message.text }}</div>
+{% endfor %}
+</div>
+{% endif %}
+<div id="site-content">
+    {% block site_content %}
+	{% endblock %}
+	<div style="clear:both;"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base/clean.html' %}
+{% block site_content %}
+{% load render %}
+<div class="content-box">
+	<div class="content-box-head">
+		<strong style="font-size:14px; float:left;">{{ suser.first_name }} {{ suser.last_name }}</strong>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body">
+		{% if tasks_open %}
+		{% render task/frag/tasks.html tasks=tasks_open %}
+		{% else %}
+		<em>Użytkownik nie ma zadań w waszych wspólnych projektach</em>
+		{% endif %}
+	</div>
+</div>
+<!--
+<div class="content-info">
+	<div class="content-info-head">
+	 	<strong>Strony</strong>
+	</div>
+	{% for page in pages %}
+	<div style="padding:4px; background-color:#eee; margin-bottom:2px">
+	<a href="/p/{{ project.name }}/wiki/{{ page.name }}/">{{ page.get_title }}</a><br/>
+	</div>
+	{% endfor %}
+</div>
+-->
+{% endblock %}

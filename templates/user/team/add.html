@@ -1,0 +1,25 @@
+{% extends 'base/project.html' %}
+{% block site_content %}
+<div class="content-box">
+	<div class="content-box-head">
+		<strong style="font-size:14px; float:left;">Dodaj osoby do {{ project.title }}</strong>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body">
+		<form action="." method="post" accept-charset="utf-8" onsubmit="select_to_field('user_ids','users')">
+			<div style="color:grey;">Osoba</div>
+			<select id="user_ids" multiple="multiple" onchange="" size="10">
+			{% for user in users %}
+				<option value="{{ user.id }}">{{ user }}</option>
+			{% endfor %}
+			</select>
+			<input type="hidden" name="users" value="" id='users'>
+			<div class="buttons-box">
+				<input style="font-weight: bold;" type="submit" value="Dodaj">
+			</div>
+		</form>
+	</div>
+</div>
+
+
+{% endblock %}

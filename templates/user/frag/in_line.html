@@ -1,0 +1,5 @@
+{% if not user %}
+---
+{% else %}
+<a user_id="{{ user.id }}" class="inline-user" href="/user/{{ user.id }}/">{{ user.first_name }} {{ user.last_name }}</a>
+{% endif %}

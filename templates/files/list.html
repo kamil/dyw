@@ -1,0 +1,40 @@
+{% extends 'base/project.html' %}
+{% block site_content %}
+<div class="content-box">
+	<div class="content-box-head">
+		<strong style="font-size:14px; float:left;">Pliki</strong>
+		<a style="float:right; margin-right:5px;" href="/p/{{ project.name }}/files/add/">Dodaj plik</a>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body">
+		{% for file in files %}
+		<div style="background-image: url(/s/img/fileicons/{{ file.get_file_ext }}.png); background-repeat: no-repeat; padding-left:20px; height:20px">
+			<a href="{{ file.get_url }}"><strong>{{ file.filename }}</strong></a> dodany <span class="ddate">{{ file.date_added }}</span>
+		</div>
+		{% endfor %}
+		
+		<div style="padding:6px; width:300px;">
+			<form action="/p/{{ project.name }}/files/add/" method="post" accept-charset="utf-8" enctype="multipart/form-data" >
+				<div style="color:grey;">Plik</div>
+				<input type="file" name="file" value="" id="file">
+				
+				<div class="buttons-box">
+					<input style="font-weight: bold;" type="submit" value="Dodaj plik">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!--
+<div class="content-info">
+	<div class="content-info-head">
+	 	<strong>Strony</strong>
+	</div>
+	{% for page in pages %}
+	<div style="padding:4px; background-color:#eee; margin-bottom:2px">
+	<a href="/p/{{ project.name }}/wiki/{{ page.name }}/">{{ page.get_title }}</a><br/>
+	</div>
+	{% endfor %}
+</div>
+-->
+{% endblock %}

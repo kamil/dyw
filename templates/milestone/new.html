@@ -1,0 +1,38 @@
+{% extends 'base/project.html' %}
+{% block site_content %}
+<div class="content-box">
+	<div class="content-box-head">
+		<strong style="font-size:14px; float:left;">Nowy etap</strong>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body">
+		<form action="." method="post" accept-charset="utf-8">
+			<div style="color:grey;">Tytuł</div>
+			{{ milestone_form.title }}
+			{{ milestone_form.errors.title }}
+			<div style="color:grey;">Opis</div>
+			{{ milestone_form.description }}
+			{{ milestone_form.errors.description }}
+			<div style="color:grey;">Data zakończenia</div>
+			{{ milestone_form.date_due }}
+			{{ milestone_form.errors.date_due }}
+			
+			<div class="buttons-box">
+				<input style="font-weight: bold;" type="submit" value="Zachowaj">
+			</div>
+		</form>
+	</div>
+</div>
+<!--
+<div class="content-info">
+	<div class="content-info-head">
+	 	<strong>Strony</strong>
+	</div>
+	{% for page in pages %}
+	<div style="padding:4px; background-color:#eee; margin-bottom:2px">
+	<a href="/p/{{ project.name }}/wiki/{{ page.name }}/">{{ page.get_title }}</a><br/>
+	</div>
+	{% endfor %}
+</div>
+-->
+{% endblock %}

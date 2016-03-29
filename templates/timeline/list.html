@@ -1,0 +1,30 @@
+{% extends 'base/project.html' %}
+{% block title %}Aktywność / DYW{% endblock %}
+{% block site_content %}
+<div class="content-box">
+	<div class="content-box-head">
+		<strong style="font-size:14px; float:left;">Aktywność <span style="font-size:10px;">( z ostatnich 24h )</span></strong>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body">
+		{% for event in events %}
+		<div>
+			<div class="ddate" style="border-bottom:solid 1px #eee; color:#888; font-size:10px;">{{ event.date_added }}</div>
+			{{ event.render|safe }}
+		</div>
+		{% endfor %}
+	</div>
+</div>
+<!--
+<div class="content-info">
+	<div class="content-info-head">
+	 	<strong>RSS</strong>
+	</div>
+	<div>
+		<div style="padding:5px; background:url(http://www.nck.org.pl/public/images/ico/rss_ico.gif) no-repeat #eee; background-position: 5px 5px;">
+			<a style="margin-left:20px;" href="/rss/timeline/{{ project.name }}/{{ project.get_secret }}/">Aktywność Projektu</a>
+		</div>
+	</div>
+</div>
+-->
+{% endblock %}

@@ -1,0 +1,7 @@
+syntax: glob
+settings.py*
+.DS_Store
+*.pyc
+*~
+media/f/attach/
+django/

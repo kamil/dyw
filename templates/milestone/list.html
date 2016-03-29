@@ -1,0 +1,52 @@
+{% extends 'base/project.html' %}
+{% block title %}Etapy / DYW{% endblock %}
+{% block site_content %}
+
+<script type="text/javascript" charset="utf-8">
+
+	window.addEvent('domready', function() {
+		var myDrag = new Drag.Move('.dupa', {
+
+		    droppables: '.droppable',
+
+		    onDrop: function(element, droppable){
+		        if (!droppable) console.log(element, ' dropped on nothing');
+		        else console.log(element, 'dropped on', droppable);
+		    },
+
+		    onEnter: function(element, droppable){
+		        console.log(element, 'entered', droppable);
+		    },
+
+		    onLeave: function(element, droppable){
+		        console.log(element, 'left', droppable);
+		    }
+
+		});
+	});
+</script>
+<div class="content-box">
+	<div class="content-box-head">
+		<strong style="font-size:14px; float:left;">Etapy</strong>
+		<a style="float:right; margin-right:5px;" href="/p/{{ project.name }}/milestones/new/">Nowy etap</a>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body">
+		{% for milestone in milestones %}
+		<div {% if milestone.complete %}style="color:#eee;"{% endif %}>
+			<div style="margin-top:10px;margin-bottom:4px;">
+	            <strong style="font-size:18px;">{{ milestone.title }}</strong> <a href="/p/{{ project.name }}/milestones/{{ milestone.id }}/tasks/">Zadania</a> ({{milestone.complite_percent}}%) {% if milestone.date_due %} <em>do {{ milestone.date_due|date:"d/m/Y" }}</em>{% endif %}
+				<div style="color:grey; padding-left:2px; font-size:10px;">{{ milestone.description }}</div> 
+	        </div>
+			{% if milestone.tasks %}
+	        	<div style="padding:6px; border-style:dashed; border-width:1px; border-color:#ccc" class="droppable">
+		        {% for task in milestone.tasks %}
+		        	<a href="/p/{{ project.name }}/tasks/{{ task.id }}/" class="ticket-b-{{ task.priority.no }}" style="padding:1px;" {% if task.assigned %}as="{{task.assigned}}"{% endif %}>{{ task.title }}</a>
+		        {% endfor %}
+				</div>
+			{% endif %}
+		</div>
+        {% endfor %}
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base/clean.html' %}
+{% block title %}Tablica / DYW{% endblock %}
+{% block site_content %}
+{% load render %}
+<div class="content-box" style="min-height:50px;">
+	{% if tasks_assigned%}
+	<div style="background-color:rgb(250, 250, 250); padding:6px; margin:7px; margin-bottom:0px;">
+		<strong style="font-size:12px; float:left;">Przypisane do mnie</strong>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body">
+		{% render task/frag/tasks.html tasks=tasks_assigned %}
+	</div>
+	{% endif %}
+	
+	{% if tasks_assigned_closed_count %}
+	<div style="padding:7px;">
+		<a style="color:lightgrey;" href="">Zadania zakończone [{{tasks_assigned_closed_count}}]</a>
+	</div>
+	{% endif %}
+	
+	{% if tasks_createdby_closed_count %}
+	<div style="background-color:rgb(250, 250, 250); padding:6px; margin:7px; margin-bottom:0px;">
+		<strong style="font-size:12px; float:left;">Stworzone przezemnie</strong>
+		<div style="clear:both"></div>
+	</div>
+	{% endif %}
+	{% if tasks_createdby %}
+	{% if not tasks_createdby_closed_count %}
+	<div style="background-color:rgb(250, 250, 250); padding:6px; margin:7px; margin-bottom:0px;">
+		<strong style="font-size:12px; float:left;">Stworzone przezemnie</strong>
+		<div style="clear:both"></div>
+	</div>
+	{% endif %}
+	<div class="content-box-body">
+		{% render task/frag/tasks.html tasks=tasks_createdby %}
+	</div>
+	{% endif %}
+	
+	{% if tasks_createdby_closed_count %}
+	<div style="padding:7px;">
+		<a style="color:lightgrey;" href="">Zadania zakończone [{{tasks_createdby_closed_count}}]</a>
+	</div>
+	{% endif %}
+	
+	
+{% if observe %}
+	<div style="background-color:rgb(250, 250, 250); padding:6px; margin:7px; margin-top:20px;">
+		<strong style="font-size:12px; float:left;">Zadania które obserwuje</strong>
+		<div style="clear:both"></div>
+	</div>
+	<div class="content-box-body">
+	</div>
+{% endif %}
+</div>
+<!--
+<div class="content-info" style="padding-top:8px;">
+	<strong style="font-size:14px;">Projekty</strong>
+	<div style="margin-top:10px;">
+	{% for item in projects %}
+		<div><a style="font-size:13px;" href="/p/{{ item.name }}/">{{ item.title }}</a><br /><span style="font-size:10px;">{{ item.description }}</span></div>
+	{% endfor %}
+	</div>
+</div>
+-->
+{% endblock %}
